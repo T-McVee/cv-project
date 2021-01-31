@@ -1,0 +1,13 @@
+.input-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.input-block input {
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0rem;
+  border-radius: 8px;
+}
