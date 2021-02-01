@@ -3,6 +3,7 @@ import './styles/app.css'
 import Personal from './components/Personal'
 
 class App extends Component {
+ 
   render() {
     return (
       <div className="app">
