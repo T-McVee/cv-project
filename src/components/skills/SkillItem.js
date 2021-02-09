@@ -6,10 +6,12 @@ export default class SkillItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showDeleteBtn: true,
+      showDeleteBtn: false,
     }
     
     this.displayRating = this.displayRating.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleDeleteSkillClick = this.handleDeleteSkillClick.bind(this)
   }
   
@@ -17,9 +19,21 @@ export default class SkillItem extends Component {
   displayRating(rating) {
     let bubbles = [...Array(rating).keys()];
     
-   return bubbles.map((n, index) => {
+    return bubbles.map((n, index) => {
       return <li key={index} className="bubble"><FontAwesomeIcon icon="circle" /></li>
     });
+  }
+
+  handleMouseEnter() {
+    this.setState({
+      showDeleteBtn: true,
+    })
+  }
+
+  handleMouseLeave() {
+    this.setState({
+      showDeleteBtn: false,
+    })
   }
 
   handleDeleteSkillClick() {
@@ -30,10 +44,10 @@ export default class SkillItem extends Component {
     const { skill } = this.props
     
     return (
-      <div className="skill">
+      <div className="skill" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         <div className="skill-title">
           <h3>{skill.title}</h3>
-          {!this.state.showDeleteBtn &&
+          {this.state.showDeleteBtn &&
             <DeleteBtn handleDeleteSkill={this.handleDeleteSkillClick}/>
           }  
         </div>  

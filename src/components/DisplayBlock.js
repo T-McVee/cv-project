@@ -8,7 +8,7 @@ class DisplayBlock extends Component {
 
     return (
       <>
-      {label ? <span className="label">{label}</span> : null}
+      {label && <span className="label">{label}</span>}
       <span className={classes}>{content}</span>
       </>
     )
