@@ -15,9 +15,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -27,23 +24,8 @@ body {
           flex-direction: column;
 }
 
-.section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
-  border: 2px solid black;
-  padding: 1rem;
+.edit {
+  color: grey;
 }
 
 .row {
@@ -57,9 +39,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  /* align-items: center; */
   width: 100%;
 }
 
@@ -74,7 +54,30 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 0.25rem 0.5rem;
+}
+
+.col.col-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 38%;
+  border: 2px solid #000000;
+}
+
+.col.col-main {
+  width: 62%;
+  border: 2px solid #000000;
+}
+
+.stack {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
 }
 
 .r-align {

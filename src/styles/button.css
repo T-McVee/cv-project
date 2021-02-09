@@ -5,6 +5,7 @@
   border: none;
   border-radius: 8px;
   transition: transform 0.3s, backgroundColor 0.3s;
+  outline: none;
 }
 
 .btn:hover {

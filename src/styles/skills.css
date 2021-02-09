@@ -1,0 +1,53 @@
+.skills {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 4rem);
+  margin-left: 4rem;
+}
+
+h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid #000000;
+  width: 100%;
+  font-weight: 500;
+}
+
+.skill-display,
+.skill-display .skill {
+  display: flex;
+  flex-direction: column;
+  margin: 0.25rem 0;
+}
+
+.skill-display .skill .skill-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.25rem 1rem 0.25rem 0rem;
+}
+
+.skill-display .skill .rating {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.skill-display .skill .rating .bubble {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.skill-add {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.form-control label {
+  margin-right: 0.25rem;
+}

@@ -12,26 +12,20 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 80%;
-  border: 2px solid black;
-  padding: 1rem;
+.edit {
+  color: grey;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   width: 100%;
 }
 
@@ -40,7 +34,22 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0.25rem 0.5rem;
+}
+
+.col.col-side {
+  display: flex;
+  flex-direction: column;
+  width: 38%;
+  border: 2px solid #000000;
+}
+
+.col.col-main {
+  width: 62%;
+  border: 2px solid #000000;
+}
+
+.stack {
+  flex-direction: column !important;
 }
 
 .r-align {

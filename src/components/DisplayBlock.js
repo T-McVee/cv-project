@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import '../styles/displayBlock.css'
 
 class DisplayBlock extends Component {
  
   render() {
-    const {content} = this.props;
+    const {content, classes, label} = this.props;
 
     return (
-      <p>{content}</p>
+      <>
+      {label ? <span className="label">{label}</span> : null}
+      <span className={classes}>{content}</span>
+      </>
     )
   }
 }
