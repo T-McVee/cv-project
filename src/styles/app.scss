@@ -6,15 +6,20 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
 }
 
 .app {
   width: 100%;
+  max-width: 900px;
   height: 100vh;
   display: flex;
   //justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
 .edit {
@@ -38,14 +43,17 @@ body {
 
 .col.col-side {
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
   width: 38%;
-  border: 2px solid #000000;
 }
 
 .col.col-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 62%;
-  border: 2px solid #000000;
+  margin-right: 4rem;
 }
 
 .stack {

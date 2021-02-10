@@ -1,8 +1,10 @@
 .skills {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start !important;
   width: calc(100% - 4rem);
   margin-left: 4rem;
+  border-right: 1px solid #000000;
 }
 
 h2 {
