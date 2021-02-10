@@ -21,7 +21,7 @@ form {
 .title-block {
   flex-direction: column;
   justify-content: flex-start;
-  width: 60%;
+  width: 62%;
   background-color: #000000;
   height: 11rem;
   color: #ffffff;
@@ -48,7 +48,7 @@ form {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: calc(40% - 3rem);
+  width: calc(38% - 3rem);
   margin-top: 3rem;
   margin-left: 3rem;
   font-size: 0.9rem;
