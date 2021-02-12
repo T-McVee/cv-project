@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'react-uuid'
 import '../../styles/skills.css'
 import SkillAdd from './SkillAdd'
 import SkillsOverview from './SkillsOverview'
@@ -11,7 +12,6 @@ export default class Skills extends Component {
         skill: '',
         rating: '7',
         skills: [],
-        editMode: false,
         showAddButton: false,
         showAddSkill: false,
     }
@@ -36,7 +36,7 @@ export default class Skills extends Component {
     e.preventDefault();
 
     const newSkills = {
-      id: Date.now(),
+      id: uuid(),
       title: this.state.skill,
       rating: Number(this.state.rating),
     };
@@ -82,7 +82,11 @@ export default class Skills extends Component {
   render() {
 
     return (
-      <section className="skills section" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <section 
+        className="skills section" 
+        onMouseEnter={this.handleMouseEnter} 
+        onMouseLeave={this.handleMouseLeave}
+      >
         <h2>Skills</h2>
         {this.state.skills.length === 0 ? (
           <SkillAdd 

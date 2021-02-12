@@ -5,7 +5,7 @@ import { faAt, faPhoneAlt, faCircle, faTimes } from '@fortawesome/free-solid-svg
 import './styles/app.css'
 import PersonalSection from './components/PersonalSection'
 import SkillsSection from './components/skills/SkillsSection'
-import CareerSection from './components/careerAndEducation/CareerSection'
+import ExperienceSection from './components/careerAndEducation/ExperienceSection'
 import EducationSection from './components/careerAndEducation/EducationSection'
 
 library.add(fab, faAt, faPhoneAlt, faCircle, faTimes)
@@ -24,7 +24,7 @@ class App extends Component {
           <div>Misc</div>
         </div>
         <div className="col col-main">
-          <CareerSection />
+          <ExperienceSection />
           <EducationSection />
         </div>
         </div>
