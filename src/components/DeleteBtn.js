@@ -4,9 +4,9 @@ import '../styles/button.css'
 
 export default class DeleteBtn extends Component {
   render() {
-    const { handleDeleteSkill } = this.props;
+    const { handleClick } = this.props;
     return (
-      <FontAwesomeIcon icon="times" className="btn-delete" onClick={(e) => handleDeleteSkill(e)} />
+      <FontAwesomeIcon icon="times" className="btn-delete" onClick={(e) => handleClick(e)} />
     )
   }
 }

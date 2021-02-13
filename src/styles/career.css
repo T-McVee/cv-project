@@ -15,6 +15,7 @@
 
 .col-details {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: flex-start;
   width: 60%;
@@ -34,4 +35,10 @@
 .col-details .description {
   font-family: serif;
   margin-top: 0.5rem;
+}
+
+.col-details .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

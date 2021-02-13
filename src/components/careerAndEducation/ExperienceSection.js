@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../styles/career.css'
 import ExperianceOverview from './ExperienceOverView'
 import ExperienceEntryForm from './ExperienceEntryForm'
+import uuid from 'react-uuid'
 
 
 export default class ExperienceSection extends Component {
@@ -13,30 +14,18 @@ export default class ExperienceSection extends Component {
       position: '',
       company: '',
       description: '',
-      entries: [
-        {
-          from: 'Sep',
-          to: 'Dec',
-          position: 'Gas Man',
-          company: 'GasCorp',
-          description: 'Pumpin gas baby... Natural gas',
-        },
-        {
-          from: 'Sep',
-          to: 'Dec',
-          position: 'Gas Man',
-          company: 'GasCorp',
-          description: 'Pumpin gas baby... Natural gas',
-        },
-      ],
+      entries: [],
       showAddEntry: false,
       showAddButton: false,
+      showExperienceEntryForm: false,
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter(this);
-    this.handleMouseLeave = this.handleMouseLeave(this);
+    this.handleAddExperienceClick = this.handleAddExperienceClick.bind(this);
+    this.hanldeDeleteExperienceClick = this.hanldeDeleteExperienceClick.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
   
   handleChange(e) {
@@ -51,6 +40,7 @@ export default class ExperienceSection extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const newEntry = {
+      id: uuid(),
       from: this.state.from,
       to: this.state.to,
       position: this.state.position,
@@ -65,9 +55,26 @@ export default class ExperienceSection extends Component {
       position: '',
       company: '',
       description: '',
+      showExperienceEntryForm: false,
     })
+  }
+
+  handleAddExperienceClick(e) {
+    e.preventDefault();
     
-    console.log(this.state.entries)
+    this.setState({
+      showExperienceEntryForm: true,
+    })
+  }
+
+  hanldeDeleteExperienceClick(id) {
+
+    const exp = [...this.state.entries];
+    const newExp = exp.filter(entry => entry.id !== id);
+
+    this.setState({
+      entries: newExp,
+    })
   }
 
   handleMouseEnter() {
@@ -101,6 +108,11 @@ export default class ExperienceSection extends Component {
           <ExperianceOverview 
             entries={this.state.entries}
             showAddButton={this.state.showAddButton}
+            showExperienceEntryForm={this.state.showExperienceEntryForm}
+            handleAddExperienceClick={this.handleAddExperienceClick}
+            deleteEntry={this.hanldeDeleteExperienceClick}
+            handleChange={this.handleChange} 
+            handleSubmit={this.handleSubmit}
           />
         )}
         

@@ -4,19 +4,31 @@ import '../styles/input-block.css'
 class InputBlock extends Component {
   
   render() {
-    const { id, name, type, placeholder, value, onChange } = this.props;
+    const { id, name, type, placeholder, value, onChange, focus } = this.props;
 
     return (
       <div className="input-block">
         <label htmlFor={id}>{name}:</label>
-        <input 
-        type={type} 
-        id={id} 
-        name={name} 
-        placeholder={placeholder}
-        onChange={(e) => onChange(e)}
-        value={value}
-        />
+        {focus ? (
+          <input 
+            type={type} 
+            id={id} 
+            name={name} 
+            placeholder={placeholder}
+            onChange={(e) => onChange(e)}
+            value={value}
+            autoFocus
+          />
+        ) : (
+          <input 
+            type={type} 
+            id={id} 
+            name={name} 
+            placeholder={placeholder}
+            onChange={(e) => onChange(e)}
+            value={value}
+          />
+        )}
       </div>
     )
   }

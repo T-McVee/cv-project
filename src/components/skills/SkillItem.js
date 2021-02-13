@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import DeleteBtn from "../DeleteBtn";
+import DeleteBtn from "../DeleteBtn"
 
 export default class SkillItem extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class SkillItem extends Component {
         <div className="skill-title">
           <h3>{skill.title}</h3>
           {this.state.showDeleteBtn &&
-            <DeleteBtn handleDeleteSkill={this.handleDeleteSkillClick}/>
+            <DeleteBtn handleClick={this.handleDeleteSkillClick}/>
           }  
         </div>  
         <ul className="rating">

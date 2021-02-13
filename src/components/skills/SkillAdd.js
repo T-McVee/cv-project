@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InputBlock from '../InputBlock'
 
 export default class SkillAdd extends Component {
   render() {
@@ -8,14 +9,12 @@ export default class SkillAdd extends Component {
       <form onSubmit={(e) => handleSubmit(e)} className="skill-add">
       <h3>List new skill:</h3>
       <div className="form-control">
-        <label htmlFor="skill">New skill:</label>
-        <input 
-          type="text"
+        <InputBlock 
           id="skill"
-          name="skill"
+          name="New skill"
           placeholder="Enter skill..."
-          onChange={(e) => handleChange(e)}
-          autoFocus
+          onChange={handleChange}
+          focus={true}
         />
       </div>
       <div className="form-control">
