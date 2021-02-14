@@ -3,13 +3,13 @@ import Entry from './Entry'
 import Button from '../Button'
 import ExperienceEntryForm from './ExperienceEntryForm';
 
-export default class ExperienceOverView extends Component {
+export default class EducationOverview extends Component {
   render() {
     const { 
       entries, 
       showAddButton, 
-      showExperienceEntryForm, 
-      handleAddExperienceClick,
+      showEducationEntryForm, 
+      handleAddEducationClick,
       deleteEntry,
       handleChange,
       handleSubmit,  
@@ -21,16 +21,16 @@ export default class ExperienceOverView extends Component {
             return <Entry key={entry.id} entry={entry} deleteEntry={deleteEntry}/>
           })}
 
-          {showExperienceEntryForm && 
+          {showEducationEntryForm && 
             <ExperienceEntryForm 
               handleChange={handleChange}
               handleSubmit={handleSubmit}
             />
           }
-          {showAddButton && !showExperienceEntryForm &&
+          {showAddButton && !showEducationEntryForm &&
             <Button 
-              btnText="+ New Experience"
-              onClick={handleAddExperienceClick}
+              btnText="+ New Education"
+              onClick={handleAddEducationClick}
             />
           }
       </div>

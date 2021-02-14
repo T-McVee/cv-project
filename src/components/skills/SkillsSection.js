@@ -89,10 +89,12 @@ export default class Skills extends Component {
       >
         <h2>Skills</h2>
         {this.state.skills.length === 0 ? (
-          <SkillAdd 
-            handleChange={this.handleChange} 
-            handleSubmit={this.handleSubmit}
-          />
+          <div className="container">
+            <SkillAdd 
+              handleChange={this.handleChange} 
+              handleSubmit={this.handleSubmit}
+            />
+          </div>
           ) : (
           <SkillsOverview 
             skills={this.state.skills} 

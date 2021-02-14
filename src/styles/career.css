@@ -3,6 +3,11 @@
   margin-left: 2rem;
 }
 
+.career form {
+  padding: 1rem 0;
+  align-items: flex-end;
+}
+
 .entry {
   margin: 0.75rem 0;
 }
@@ -40,5 +45,16 @@
 .col-details .delete {
   position: absolute;
   top: 0;
+  right: 0;
+}
+
+.experience-overview {
+  position: relative;
+  padding-bottom: calc(1rem + 31px);
+}
+
+.experience-overview .btn {
+  position: absolute;
+  bottom: 0;
   right: 0;
 }

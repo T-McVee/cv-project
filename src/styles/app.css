@@ -17,8 +17,8 @@ body {
 }
 
 .app {
-  width: 700px;
-  max-width: 700px;
+  width: 720px;
+  max-width: 720px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -75,7 +75,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 38%;
+  width: 34%;
 }
 
 .col.col-main {
@@ -89,7 +89,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  width: 62%;
+  width: 66%;
   margin-right: 4rem;
 }
 

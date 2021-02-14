@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../styles/personal.css'
-import InputBlock from './InputBlock'
-import DisplayBlock from './DisplayBlock'
-import Button from './Button'
+import '../../styles/personal.css'
+import InputBlock from '../InputBlock'
+import DisplayBlock from '../DisplayBlock'
+import Button from '../Button'
 import ContactMethod from './ContactMethod';
 
 
@@ -12,7 +12,7 @@ class Personal extends Component {
     this.state = {
       firstName: 'Tim',
       lastName: 'McVinish',
-      profesion: 'Marketer & Front End Dev',
+      profession: 'Marketer & Front End Dev',
       phone: '123-123-1234',
       email: 'iam@tmcvee.com',
       address: 'Kelowna, BC, Canada',
@@ -133,7 +133,7 @@ class Personal extends Component {
                   type="text"
                   placeholder="Profession..."
                   onChange={this.handleChange}
-                  value={this.state.profesion}
+                  value={this.state.profession}
                 />
               </div>
             </div>
@@ -153,7 +153,7 @@ class Personal extends Component {
                   content={`${this.state.firstName}  ${this.state.lastName}`}
                 />
                 <DisplayBlock 
-                  content={this.state.profesion} 
+                  content={this.state.profession} 
                 />
               </div>
               <div className="col contact-details">

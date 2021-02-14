@@ -11,8 +11,8 @@ export default class ExperienceSection extends Component {
     this.state = {
       from: '',
       to: '',
-      position: '',
-      company: '',
+      title: '',
+      place: '',
       description: '',
       entries: [],
       showAddEntry: false,
@@ -34,7 +34,6 @@ export default class ExperienceSection extends Component {
     this.setState({
       [id]: value,
     })
-    console.log(this.state[id]);
   }
 
   handleSubmit(e) {
@@ -43,8 +42,8 @@ export default class ExperienceSection extends Component {
       id: uuid(),
       from: this.state.from,
       to: this.state.to,
-      position: this.state.position,
-      company: this.state.company,
+      title: this.state.title,
+      place: this.state.place,
       description: this.state.description,
     }
     
@@ -52,10 +51,11 @@ export default class ExperienceSection extends Component {
       entries: this.state.entries.concat(newEntry),
       from: '',
       to: '',
-      position: '',
-      company: '',
+      title: '',
+      place: '',
       description: '',
       showExperienceEntryForm: false,
+      showAddButton: false,
     })
   }
 
@@ -68,7 +68,6 @@ export default class ExperienceSection extends Component {
   }
 
   hanldeDeleteExperienceClick(id) {
-
     const exp = [...this.state.entries];
     const newExp = exp.filter(entry => entry.id !== id);
 
@@ -115,7 +114,6 @@ export default class ExperienceSection extends Component {
             handleSubmit={this.handleSubmit}
           />
         )}
-        
       </section>
     )
   }

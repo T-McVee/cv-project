@@ -54,7 +54,6 @@ export default class SkillItem extends Component {
         <ul className="rating">
           {this.displayRating(skill.rating)}
         </ul>
-        
       </div>
     )
   }

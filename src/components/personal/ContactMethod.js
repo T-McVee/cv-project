@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import DisplayBlock from './DisplayBlock'
+import DisplayBlock from '../DisplayBlock'
 
 export default class ContactMethod extends Component {
   render() {

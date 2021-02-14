@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import uuid from 'react-uuid'
 import SkillItem from './SkillItem'
 import SkillAdd from './SkillAdd'
 import Button from '../Button'
@@ -28,10 +27,11 @@ export default class SkillsOverview extends Component {
             handleSubmit={handleSubmit}
           />
         }
-        {showButton &&
+        {showButton && !showAddSkill &&
           <Button 
-          btnText="Add skill"
-          onClick={handleAddSkillClick} />
+            btnText="+ New Skill"
+            onClick={handleAddSkillClick} 
+          />
         }
        
       </div>

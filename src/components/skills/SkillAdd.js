@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import InputBlock from '../InputBlock'
+import Button from '../Button'
 
 export default class SkillAdd extends Component {
   render() {
@@ -28,7 +29,7 @@ export default class SkillAdd extends Component {
           onChange={(e) => handleChange(e)}
         />
       </div>
-      <button type="submit" className="btn">Add Skill</button>
+      <Button btnText="Add Skill" onClick={handleSubmit} />
     </form>
     )
   }
