@@ -3,11 +3,28 @@ import InputBlock from '../InputBlock'
 import Button from '../Button'
 
 export default class SkillAdd extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      valid: false,
+    }
+
+    this.isValid = this.isValid.bind(this);
+  }
+
+  isValid(e) {
+    e.preventDefault();
+    const input = e.target.skill;
+
+    if (!input.value) return input.style.borderColor = "red";
+    this.props.handleSubmit(e);
+  }
+  
   render() {
-    const { handleChange, handleSubmit } = this.props;
+    const { handleChange } = this.props;
 
     return (
-      <form onSubmit={(e) => handleSubmit(e)} className="skill-add">
+      <form className="skill-add" onSubmit={(e) => this.isValid(e)}>
       <h3>List new skill:</h3>
       <div className="form-control">
         <InputBlock 
@@ -16,6 +33,7 @@ export default class SkillAdd extends Component {
           placeholder="Enter skill..."
           onChange={handleChange}
           focus={true}
+          minLength={0}
         />
       </div>
       <div className="form-control">
@@ -29,7 +47,7 @@ export default class SkillAdd extends Component {
           onChange={(e) => handleChange(e)}
         />
       </div>
-      <Button btnText="Add Skill" onClick={handleSubmit} />
+      <button className="btn" type="submit">Add Skill</button>
     </form>
     )
   }
