@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DateBlock from '../DateBlock'
 import InputBlock from '../InputBlock'
 import TextBlock from '../TextBlock'
 import Button from '../Button'
@@ -27,15 +28,17 @@ export default class ExperienceEntryForm extends Component {
           placeholder="Describe the position..." 
           onChange={handleChange}
         />
-        <InputBlock 
+        <DateBlock 
           name="From" 
           id="from" 
+          label="From"
           placeholder="Date you started..."
           onChange={handleChange}
         />
-        <InputBlock 
+        <DateBlock 
           name="To" 
-          id="to" 
+          id="to"
+          label="To" 
           placeholder="Date you left..."
           onChange={handleChange}
         />

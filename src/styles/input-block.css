@@ -1,5 +1,6 @@
 .input-block,
-.text-block {
+.text-block,
+.date-block {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +8,7 @@
 }
 
 .input-block input,
+.date-block input,
 .text-block textarea {
   padding: 0.5rem 0.75rem;
   margin: 0.5rem 0rem;
