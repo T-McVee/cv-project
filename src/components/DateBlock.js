@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import datepicker from 'js-datepicker'
+import { format } from 'date-fns'
 import '../styles/dateBlock.css'
 
 
@@ -9,7 +10,7 @@ export default class DateBlock extends Component {
     const target = `#${this.props.id}`;
     const picker = datepicker(target, { 
       formatter: (input, date, instance) => {
-        const value = date.toLocaleDateString()
+        const value = format(date, 'MMM yyyy');
         input.value = value;
       },
 
@@ -18,7 +19,7 @@ export default class DateBlock extends Component {
           target: {
             id: this.props.id,
             // Use date-fns to format into mm/yyyy
-            value: date.toLocaleDateString(),
+            value: format(date, "MMM yyyy"),
           }
         }
 

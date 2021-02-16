@@ -34,8 +34,6 @@ export default class ExperienceSection extends Component {
     this.setState({
       [id]: value,
     })
-
-    console.log(e.target)
   }
 
   handleSubmit(e) {
