@@ -9,7 +9,7 @@ export default class DateBlock extends Component {
   componentDidMount() {
     const target = `#${this.props.id}`;
     const picker = datepicker(target, { 
-      formatter: (input, date, instance) => {
+      formatter: (input, date) => {
         const value = format(date, 'MMM yyyy');
         input.value = value;
       },
@@ -18,7 +18,6 @@ export default class DateBlock extends Component {
         const e = {
           target: {
             id: this.props.id,
-            // Use date-fns to format into mm/yyyy
             value: format(date, "MMM yyyy"),
           }
         }

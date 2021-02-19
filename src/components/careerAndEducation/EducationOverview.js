@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Entry from './Entry'
 import Button from '../Button'
-import ExperienceEntryForm from './ExperienceEntryForm';
+import EducationEntryForm from './EducationEntryForm';
 
 export default class EducationOverview extends Component {
   render() {
@@ -22,7 +22,7 @@ export default class EducationOverview extends Component {
           })}
 
           {showEducationEntryForm && 
-            <ExperienceEntryForm 
+            <EducationEntryForm 
               handleChange={handleChange}
               handleSubmit={handleSubmit}
             />

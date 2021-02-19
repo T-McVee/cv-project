@@ -21,7 +21,6 @@ class App extends Component {
         <div className="row">
         <div className="col col-side">
           <SkillsSection />
-          <div>Misc</div>
         </div>
         <div className="col col-main">
           <ExperienceSection />

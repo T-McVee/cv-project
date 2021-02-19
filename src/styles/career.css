@@ -16,6 +16,7 @@
   display: flex;
   justify-content: flex-start;
   width: 40%;
+  font-size: 0.9rem;
 }
 
 .col-details {

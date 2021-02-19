@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../styles/career.css'
 import EducationOverview from './EducationOverview'
 import EducationEntryForm from './EducationEntryForm'
+import ErrorBoundary from '../ErrorBoundary'
 import uuid from 'react-uuid'
 import { faGalacticSenate } from '@fortawesome/free-brands-svg-icons'
 
@@ -9,18 +10,18 @@ export default class EducationSection extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      from: '',
-      to: '',
-      title: '',
-      place: '',
+      edFrom: '',
+      edTo: '',
+      cert: '',
+      school: '',
       description: '',
       entries: [
         {
           id: '1231',
-          from: '2010',
-          to: '2012',
-          title: 'Masters of Business',
-          place: 'Queensland University of Technology',
+          edFrom: '2010',
+          edTo: '2012',
+          cert: 'Masters of Business',
+          school: 'Queensland University of Technology',
           description: 'Majored in marketing with a keen interest in digital platforms and their changing of our world and communications.',
         }
       ],
@@ -50,8 +51,8 @@ export default class EducationSection extends Component {
 
     const newEntry = {
       id: uuid(),
-      from: this.state.from,
-      to: this.state.to,
+      from: this.state.edFrom,
+      to: this.state.edTo,
       cert: this.state.cert,
       school: this.state.school,
       description: this.state.description,
@@ -59,8 +60,8 @@ export default class EducationSection extends Component {
     
     this.setState({
       entries: this.state.entries.concat(newEntry),
-      from: '',
-      to: '',
+      edFrom: '',
+      edTo: '',
       cert: '',
       school: '',
       description: '',
@@ -106,24 +107,26 @@ export default class EducationSection extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <h2>Education</h2>
-        {this.state.entries.length === 0 ? (
-          <div>
-            <EducationEntryForm 
+        <ErrorBoundary>
+          {this.state.entries.length === 0 ? (
+            <div>
+              <EducationEntryForm 
+                handleChange={this.handleChange} 
+                handleSubmit={this.handleSubmit}
+              />
+            </div>
+          ) : (
+            <EducationOverview 
+              entries={this.state.entries}
+              showAddButton={this.state.showAddButton}
+              showEducationEntryForm={this.state.showEducationEntryForm}
+              handleAddEducationClick={this.handleAddEducationClick}
+              deleteEntry={this.hanldeDeleteEducationClick}
               handleChange={this.handleChange} 
               handleSubmit={this.handleSubmit}
             />
-          </div>
-        ) : (
-          <EducationOverview 
-            entries={this.state.entries}
-            showAddButton={this.state.showAddButton}
-            showEducationEntryForm={this.state.showEducationEntryForm}
-            handleAddEducationClick={this.handleAddEducationClick}
-            deleteEntry={this.hanldeDeleteEducationClick}
-            handleChange={this.handleChange} 
-            handleSubmit={this.handleSubmit}
-          />
-        )}
+          )}
+        </ErrorBoundary>
       </section>
     )
   }

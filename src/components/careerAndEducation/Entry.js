@@ -38,10 +38,10 @@ export default class Entry extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="row">
-          <div className="col col-date">{entry.from} - {entry.to}</div>
+          <div className="col col-date">{entry.from || entry.edFrom} - {entry.to || entry.edTo}</div>
           <div className="col col-details">
-            <div className="position">{entry.title}</div>
-            <div className="company">{entry.place}</div>
+            <div className="position">{entry.title || entry.cert}</div>
+            <div className="company">{entry.place || entry.school}</div>
             <div className="description">{entry.description}</div>
             {this.state.showDeleteButton && 
               <div className="delete"><DeleteBtn handleClick={this.handleDeleteEntryClick}/></div>
