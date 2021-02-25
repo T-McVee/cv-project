@@ -4,8 +4,8 @@ import SkillAdd from './SkillAdd'
 import Button from '../Button'
 
 
-export default class SkillsOverview extends Component {
-  render() {
+const SkillsOverview = props => {
+  
     const { 
       skills, 
       showButton, 
@@ -14,27 +14,27 @@ export default class SkillsOverview extends Component {
       deleteSkill, 
       handleChange, 
       handleSubmit 
-    } = this.props;
+    } = props;
 
-    return (
-      <div className="skill-display">
-        {skills.map(skill => {
-          return <SkillItem key={skill.id} skill={skill} deleteSkill={deleteSkill}/>
-        })}
-        {showAddSkill &&
-          <SkillAdd 
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        }
-        {showButton && !showAddSkill &&
-          <Button 
-            btnText="+ New Skill"
-            onClick={handleAddSkillClick} 
-          />
-        }
-       
-      </div>
-    )
-  }
+  return (
+    <div className="skill-display">
+      {skills.map(skill => {
+        return <SkillItem key={skill.id} skill={skill} deleteSkill={deleteSkill}/>
+      })}
+      {showAddSkill &&
+        <SkillAdd 
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      }
+      {showButton && !showAddSkill &&
+        <Button 
+          btnText="+ New Skill"
+          onClick={handleAddSkillClick} 
+        />
+      }
+    </div>
+  )
 }
+
+export default SkillsOverview;

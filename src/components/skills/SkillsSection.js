@@ -1,113 +1,105 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import uuid from 'react-uuid'
 import '../../styles/skills.css'
 import SkillAdd from './SkillAdd'
 import SkillsOverview from './SkillsOverview'
 
 
-export default class Skills extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-        skill: '',
-        rating: '7',
-        skills: [],
-        showAddButton: false,
-        showAddSkill: false,
+const Skills = props => {
+  const [skill, setSkill] = useState('');
+  const [rating, setRating] = useState('7');
+  const [skills, setSkills] = useState([]);
+  const [showAddButton, setShowAddButton] = useState(false);
+  const [showAddSkill, setShowAddSkill] = useState(false);
+
+  const determineKey = (id) => {
+    if (id === 'skill') {
+      return setSkill
+    } else if (id === 'rating') {
+      return setRating
+    } else if (id === 'skills') {
+      return setSkills
+    } else if (id === 'showAddButton') {
+      return setShowAddButton
+    } else {
+      return setShowAddSkill
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAddSkillClick = this.handleAddSkillClick.bind(this);
-    this.deleteSkill = this.deleteSkill.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  handleChange(e) {
+  const handleChange = (e) => {
     const { id, value } = e.target;
-    this.setState({
-      [id]: value
-    })
-    console.log(this.state);
+    const updateValue = determineKey(id);
+
+    updateValue(value);
   }
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newSkills = {
       id: uuid(),
-      title: this.state.skill,
-      rating: Number(this.state.rating),
+      title: skill,
+      rating: Number(rating),
     };
 
-    this.setState({
-      skills: this.state.skills.concat(newSkills),
-      skill: '',
-      rating: '7',
-      showAddSkill: false,
-    });
-    console.log(this.state);
+    setSkills(skills.concat(newSkills));
+    setSkill('');
+    setRating('7');
+    setShowAddSkill(false);
+
+    /* console.log(state); */
   }
 
-  handleAddSkillClick(e) {
+  const handleAddSkillClick = (e) => {
     e.preventDefault();
 
-    this.setState({
-      showAddSkill: true,
-    })
+    setShowAddSkill(true);
   }
 
-  deleteSkill(id) {
-    const skills = [...this.state.skills]
-    const newSkills = skills.filter(skill => skill.id !== id)
+  const deleteSkill = (id) => {
+    const currentSkills = [...skills]
+    const newSkills = currentSkills.filter(skill => skill.id !== id)
 
-    this.setState({
-      skills: newSkills,
-    })
+    setSkills(newSkills);
   }
 
-  handleMouseEnter() {
-    this.setState({
-      showAddButton: true,
-    })
+  const handleMouseEnter = () => {
+    setShowAddButton(true);
   }
 
-  handleMouseLeave() {
-    this.setState({
-      showAddButton: false,
-    })
+  const handleMouseLeave = () => {
+    setShowAddButton(false);
   }
   
-  render() {
-
-    return (
-      <section 
-        className="skills section" 
-        onMouseEnter={this.handleMouseEnter} 
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <h2>Skills</h2>
-        {this.state.skills.length === 0 ? (
-          <div className="container">
-            <SkillAdd 
-              handleChange={this.handleChange} 
-              handleSubmit={this.handleSubmit}
-            />
-          </div>
-          ) : (
-          <SkillsOverview 
-            skills={this.state.skills} 
-            showButton={this.state.showAddButton}
-            showAddSkill={this.state.showAddSkill}
-            handleAddSkillClick={this.handleAddSkillClick}
-            deleteSkill={this.deleteSkill}
-            handleChange={this.handleChange} 
-            handleSubmit={this.handleSubmit} 
+  return (
+    <section 
+      className="skills section" 
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
+    >
+      <h2>Skills</h2>
+      {skills.length === 0 ? (
+        <div className="container">
+          <SkillAdd 
+            handleChange={handleChange} 
+            handleSubmit={handleSubmit}
           />
-          )
-        }
-      </section>
-    )
-  }
+        </div>
+        ) : (
+        <SkillsOverview 
+          skills={skills} 
+          showButton={showAddButton}
+          showAddSkill={showAddSkill}
+          handleAddSkillClick={handleAddSkillClick}
+          deleteSkill={deleteSkill}
+          handleChange={handleChange} 
+          handleSubmit={handleSubmit} 
+        />
+        )
+      }
+    </section>
+  )
+  
 }
+
+export default Skills;

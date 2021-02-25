@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
 import DateBlock from '../DateBlock'
 import InputBlock from '../InputBlock'
 import TextBlock from '../TextBlock'
 import Button from '../Button'
 
-export default class ExperienceEntryForm extends Component {
-  render() {
-    const { handleChange, handleSubmit  } = this.props;
+const ExperienceEntryForm = props => {
+  const { handleChange, handleSubmit  } = props;
 
     return (
       <form>
@@ -46,4 +44,5 @@ export default class ExperienceEntryForm extends Component {
       </form>
     )
   }
-}
+
+  export default ExperienceEntryForm;

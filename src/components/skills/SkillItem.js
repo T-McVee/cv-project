@@ -1,22 +1,11 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DeleteBtn from "../DeleteBtn"
 
-export default class SkillItem extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showDeleteBtn: false,
-    }
+const SkillItem = props => {
+  const [showDeleteBtn, setShowDeleteButton] = useState(false);
     
-    this.displayRating = this.displayRating.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleDeleteSkillClick = this.handleDeleteSkillClick.bind(this)
-  }
-  
-
-  displayRating(rating) {
+  const displayRating = rating => {
     let bubbles = [...Array(rating).keys()];
     
     return bubbles.map((n, index) => {
@@ -24,37 +13,33 @@ export default class SkillItem extends Component {
     });
   }
 
-  handleMouseEnter() {
-    this.setState({
-      showDeleteBtn: true,
-    })
+  const handleMouseEnter = () => {
+    setShowDeleteButton(true);
   }
 
-  handleMouseLeave() {
-    this.setState({
-      showDeleteBtn: false,
-    })
+  const handleMouseLeave = () => {
+    setShowDeleteButton(false);
   }
 
-  handleDeleteSkillClick() {
-    this.props.deleteSkill(this.props.skill.id)
+  const handleDeleteSkillClick = () => {
+    props.deleteSkill(props.skill.id)
   }
 
-  render() {
-    const { skill } = this.props
+  const { skill } = props
     
-    return (
-      <div className="skill" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        <div className="skill-title">
-          <h3>{skill.title}</h3>
-          {this.state.showDeleteBtn &&
-            <DeleteBtn handleClick={this.handleDeleteSkillClick}/>
-          }  
-        </div>  
-        <ul className="rating">
-          {this.displayRating(skill.rating)}
-        </ul>
-      </div>
-    )
-  }
+  return (
+    <div className="skill" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className="skill-title">
+        <h3>{skill.title}</h3>
+        {showDeleteBtn &&
+          <DeleteBtn handleClick={handleDeleteSkillClick}/>
+        }  
+      </div>  
+      <ul className="rating">
+        {displayRating(skill.rating)}
+      </ul>
+    </div>
+  )
 }
+
+export default SkillItem;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import '../../styles/career.css'
 import EducationOverview from './EducationOverview'
 import EducationEntryForm from './EducationEntryForm'
@@ -6,128 +6,121 @@ import ErrorBoundary from '../ErrorBoundary'
 import uuid from 'react-uuid'
 import { faGalacticSenate } from '@fortawesome/free-brands-svg-icons'
 
-export default class EducationSection extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      edFrom: '',
-      edTo: '',
-      cert: '',
-      school: '',
-      description: '',
-      entries: [
-        {
-          id: '1231',
-          edFrom: '2010',
-          edTo: '2012',
-          cert: 'Masters of Business',
-          school: 'Queensland University of Technology',
-          description: 'Majored in marketing with a keen interest in digital platforms and their changing of our world and communications.',
-        }
-      ],
-      showAddEntry: false,
-      showAddButton: false,
-      showEducationEntryForm: false,
+const EducationSection = props => {
+  const [edFrom, setEdFrom] = useState('');  
+  const [edTo, setEdTo] = useState('');  
+  const [cert, setCert] = useState('');  
+  const [school, setSchool] = useState('');  
+  const [description, setDescription] = useState('');  
+  const [entries, setEntries] = useState([]);  
+  const [showAddButton, setShowAddButton] = useState(false);
+  const [showEducationEntryForm, setShowEducationEntryForm] = useState(false)
+  
+  const determineKey = (id) => {
+    if (id === 'edFrom') {
+      return setEdFrom
+    } else if (id === 'edTo') {
+      return setEdTo
+    } else if (id === 'cert') {
+      return setCert
+    } else if (id === 'school') {
+      return setSchool
+    } else if (id === 'description') {
+      return setDescription
+    } else if (id === 'entries') {
+      return setEntries
+    } else if (id === 'showAddButton') {
+      return setShowAddButton
+    } else if (id === 'showEducationEntryForm') {
+      return setShowEducationEntryForm
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAddEducationClick = this.handleAddEducationClick.bind(this);
-    this.hanldeDeleteEducationClick = this.hanldeDeleteEducationClick.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  handleChange(e) {
+  const handleChange = (e) => {
     const { id, value } = e.target;
+    const updateValue = determineKey(id);
 
-    this.setState({
-      [id]: value,
-    })
+    updateValue(value);
   }
 
-  handleSubmit(e) {
+  const resetState = () => {
+    setEdFrom('');
+    setEdTo('');
+    setCert('');
+    setSchool('');
+    setDescription('');
+    setShowEducationEntryForm(false);
+    setShowAddButton(false);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newEntry = {
       id: uuid(),
-      from: this.state.edFrom,
-      to: this.state.edTo,
-      cert: this.state.cert,
-      school: this.state.school,
-      description: this.state.description,
+      from: edFrom,
+      to: edTo,
+      cert: cert,
+      school: school,
+      description: description,
     }
     
-    this.setState({
-      entries: this.state.entries.concat(newEntry),
-      edFrom: '',
-      edTo: '',
-      cert: '',
-      school: '',
-      description: '',
-      showEducationEntryForm: false,
-      showAddButton: false,
-    })
+    setEntries(entries.concat(newEntry));
+    resetState();
   }
 
-  handleAddEducationClick(e) {
+  const handleAddEducationClick = (e) => {
     e.preventDefault();
 
-    this.setState({
-      showEducationEntryForm: true,
-    })
+    setShowEducationEntryForm(true);
   }
 
-  hanldeDeleteEducationClick(id) {
-    const exp = [...this.state.entries];
+  const hanldeDeleteEducationClick = (id) => {
+    const exp = [...entries];
     const newExp = exp.filter(entry => entry.id !== id);
 
-    this.setState({
-      entries: newExp,
-    })
+    setEntries(newExp);
   }
 
-  handleMouseEnter() {
-    this.setState({
-      showAddButton: true,
-    })
+  const handleMouseEnter = () => {
+    setShowAddButton(true);
   }
 
-  handleMouseLeave() {
-    this.setState({
-      showAddButton: false,
-    })
+  const handleMouseLeave = () => {
+    setShowAddButton(false);
   }
   
-  render() {
-    return (
-      <section
-        className="career section" 
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <h2>Education</h2>
-        <ErrorBoundary>
-          {this.state.entries.length === 0 ? (
-            <div>
-              <EducationEntryForm 
-                handleChange={this.handleChange} 
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-          ) : (
-            <EducationOverview 
-              entries={this.state.entries}
-              showAddButton={this.state.showAddButton}
-              showEducationEntryForm={this.state.showEducationEntryForm}
-              handleAddEducationClick={this.handleAddEducationClick}
-              deleteEntry={this.hanldeDeleteEducationClick}
-              handleChange={this.handleChange} 
-              handleSubmit={this.handleSubmit}
+  
+  return (
+    <section
+      className="career section" 
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <h2>Education</h2>
+      <ErrorBoundary>
+        {entries.length === 0 ? (
+          <div>
+            <EducationEntryForm 
+              handleChange={handleChange} 
+              handleSubmit={handleSubmit}
             />
-          )}
-        </ErrorBoundary>
-      </section>
-    )
-  }
+          </div>
+        ) : (
+          <EducationOverview 
+            entries={entries}
+            showAddButton={showAddButton}
+            showEducationEntryForm={showEducationEntryForm}
+            handleAddEducationClick={handleAddEducationClick}
+            deleteEntry={hanldeDeleteEducationClick}
+            handleChange={handleChange} 
+            handleSubmit={handleSubmit}
+          />
+        )}
+      </ErrorBoundary>
+    </section>
+  )
 }
+
+
+export default EducationSection;
